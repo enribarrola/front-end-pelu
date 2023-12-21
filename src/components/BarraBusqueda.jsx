@@ -8,7 +8,6 @@ const BarraBusqueda = ({ setResults }) => {
 	const fetchSearch = async (value) => {
 		const response = await fetch(`http://localhost:3000/api/cliente/${value||'z'}`);
 		const data = await response.json();
-		console.log({data:data});
 		const results = data.filter((item) => {
 			return (
 				value &&
@@ -18,7 +17,6 @@ const BarraBusqueda = ({ setResults }) => {
 				item.nombre.toLowerCase().includes(value.toLowerCase()) ||
 				item.ruc.toLowerCase().includes(value.toLowerCase()));
 		});
-		console.log({result:results});
 		cambiarEstado(results);
 	};
 
@@ -28,9 +26,9 @@ const BarraBusqueda = ({ setResults }) => {
 
 	const debounceRef = useRef();
 
-	const changeStyle = () => {
+	/* const changeStyle = () => {
 		console.log(document.getElementsByClassName('result-list')[0].style.display = 'absolute');
-	};
+	}; */
 
 
 	const handleChange = (event) => {
